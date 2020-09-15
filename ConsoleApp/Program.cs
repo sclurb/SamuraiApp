@@ -25,11 +25,6 @@ namespace ConsoleApp
             //RetrieveAndUpdateMultipleSamurais();
             //RetrieveAndDeleteSamurai();
             //RetrieveAndUpdateSamurai();
-            //InsertBattle();
-            //QueryAndUpdateBattle_Disconnected();
-            //InsertNewSamuraiWithQuote();
-            //InsertNewSamuraiWithManyQuotes();
-            //AddQuoteToExistingSamuraiWhileTracking();
             //int samuraiId = 2;
             //AddQuoteToExistingSamuraiNotTracked(samuraiId);
             //AddQuoteToExistingSamuraiNotTracked(samuraiId);
@@ -49,7 +44,7 @@ namespace ConsoleApp
             //AddNewHorseToSamuraiUsingId();
             //AddNewHorseToSamuraiObject();
             //AddNewHorseToDisConnectedSamuraiObject();
-            //ReplaceHorse();
+            ReplaceHorse();
             //GetSamuraiWithHorse();
             GetHorseWithSamurai();
 
@@ -319,21 +314,21 @@ namespace ConsoleApp
 
         private static void AddNewHorseToSamuraiUsingId()
         {
-            var horse = new Horse { Name = "Scout", SamuraiId = 2};
+            var horse = new Horse { Name = "Trigger", SamuraiId = 1};
             _context.Add(horse);
             _context.SaveChanges();
         }
 
         private static void AddNewHorseToSamuraiObject()
         {
-            var samurai = _context.Samurais.Find(8);
+            var samurai = _context.Samurais.Find(5);
             samurai.Horse = new Horse { Name = "Black Beauty" };
             _context.SaveChanges();
         }
 
         private static void AddNewHorseToDisConnectedSamuraiObject()
         {
-            var samurai = _context.Samurais.AsNoTracking().FirstOrDefault(s => s.Id == 6);
+            var samurai = _context.Samurais.AsNoTracking().FirstOrDefault(s => s.Id == 3);
             samurai.Horse = new Horse { Name = "Mr. Ed" }; 
             using (var newContext = new SamuraiContext())
             {
@@ -344,7 +339,7 @@ namespace ConsoleApp
 
         private static void ReplaceHorse()
         {
-            var samurai = _context.Samurais.Include(s => s.Horse).FirstOrDefault(s => s.Id == 8);
+            var samurai = _context.Samurais.Include(s => s.Horse).FirstOrDefault(s => s.Id == 4);
             samurai.Horse = new Horse { Name = "Trigger" };
             _context.SaveChanges();
         }
