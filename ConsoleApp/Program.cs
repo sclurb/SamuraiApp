@@ -44,13 +44,28 @@ namespace ConsoleApp
             //AddNewHorseToSamuraiUsingId();
             //AddNewHorseToSamuraiObject();
             //AddNewHorseToDisConnectedSamuraiObject();
-            ReplaceHorse();
+            //ReplaceHorse();
             //GetSamuraiWithHorse();
-            GetHorseWithSamurai();
+            //GetHorseWithSamurai();
+
+            InsertMultipleSamuraisTest();
 
             Console.ReadKey();
 
         }
+
+        private static void InsertMultipleSamuraisTest()
+        {
+            //var samurai1 = new Samurai { Name = "Georgette" };
+            //var samurai2 = new Samurai { Name = "Claudia" };
+            //var samurai3 = new Samurai { Name = "Janice" };
+            //var samurai4 = new Samurai { Name = "Penelope" };
+
+            var bizData = new BusinessDataLogic();
+            var samuraiNames = new String[] { "Georgette", "Claudia", "Janice", "Penelope" };
+            var newSamuraiCreated = bizData.AddMultipleSamurais(samuraiNames);
+        }
+
 
         private static void QueryFilters()
         {
